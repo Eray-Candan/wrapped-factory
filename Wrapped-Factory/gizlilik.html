@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gizlilik Bildirimi ve Aydınlatma Metni (Taslak)</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--ink:#14111F;--muted:#5C6370;--line:#D5DCE4;--canvas:#F6F8FA;--warn:#FFF3C4}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--canvas);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:780px;margin:0 auto;padding:40px 22px 80px}
+  a{color:#1F6FEB}
+  h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:.2em 0 .4em;letter-spacing:-.02em}
+  h2{font-size:22px;margin:2em 0 .4em;letter-spacing:-.01em}
+  p,li{margin:.5em 0}
+  ul{padding-left:1.25em}
+  .draft{background:var(--warn);border:2px solid #E0B800;border-radius:14px;padding:14px 18px;font-size:15px}
+  .box{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:6px 18px;margin:14px 0}
+  .ph{background:#FFE1E1;border-radius:6px;padding:0 5px;font-weight:600;white-space:nowrap}
+  table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
+  th,td{border:1.5px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#fff}
+  .back{display:inline-block;margin-bottom:10px;font-weight:600}
+  small{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← Ana sayfaya dön</a>
+  <h1>Gizlilik Bildirimi ve Aydınlatma Metni</h1>
+  <p class="draft"><b>TASLAK.</b> Bu metin hukuki danışmanlık değildir. Yayınlamadan önce bir hukukçuya gözden geçirtin ve kırmızı işaretli <span class="ph">[…]</span> alanları kendi bilgilerinizle doldurun. Aşağıdaki teknik anlatım, sitenin mevcut kodundaki davranışa göre yazılmıştır; siteyi değiştirirseniz metni de güncelleyin.</p>
+
+  <h2>1. Kısaca</h2>
+  <div class="box">
+    <ul>
+      <li>Bu sitenin <b>kendi sunucusuna veri yüklemezsiniz</b>. Dosyalarınız ve analizleriniz tarayıcınızda işlenir.</li>
+      <li>Hesap, giriş ve çerez yoktur. Reklam ya da kullanım analitiği aracı kullanılmaz.</li>
+      <li>Kullanıcı adı yazarak kullandığınız kaynaklarda, tarayıcınız ilgili hizmetin <b>herkese açık</b> verisini doğrudan o hizmetten çeker.</li>
+      <li>Ürettiğiniz kartları ve videoyu paylaşmak tamamen sizin kararınızdır.</li>
+    </ul>
+  </div>
+
+  <h2>2. Veri sorumlusu</h2>
+  <p><span class="ph">[Ad Soyad / Şirket unvanı]</span>, <span class="ph">[Adres]</span>, <span class="ph">[E-posta]</span></p>
+  <p>Site <span class="ph">[barındırma sağlayıcısı, örn. Vercel]</span> üzerinde yayınlanmaktadır.</p>
+
+  <h2>3. Hangi veri nasıl işlenir?</h2>
+  <table>
+    <tr><th>Kaynak</th><th>Ne yapılır?</th><th>Verinin gittiği yer</th></tr>
+    <tr><td>GitHub, Takım</td><td>Yazdığınız kullanıcı adı ya da organizasyon/depo adıyla herkese açık GitHub verisi çekilir. Girerseniz kişisel erişim token'ı yalnızca sayfa belleğinde tutulur ve yalnızca GitHub'a gönderilir.</td><td>GitHub (api.github.com). GitHub katkı takvimi için ayrıca üçüncü taraf bir topluluk hizmeti olan <b>github-contributions-api.jogruber.de</b>'ye kullanıcı adınız gönderilir.</td></tr>
+    <tr><td>Satranç</td><td>Kullanıcı adınızla herkese açık oyun verisi çekilir.</td><td>Lichess ya da Chess.com (seçtiğiniz platform).</td></tr>
+    <tr><td>Anime</td><td>Kullanıcı adınızla herkese açık liste çekilir. Gizli listeler okunamaz.</td><td>AniList (graphql.anilist.co).</td></tr>
+    <tr><td>Kod Soruları</td><td>Profil numaranızla herkese açık cevap, soru ve itibar geçmişi çekilir.</td><td>Stack Exchange (api.stackexchange.com).</td></tr>
+    <tr><td>WhatsApp, Müzik, Film</td><td>Yüklediğiniz dosya <b>cihazınızdan çıkmaz</b>; tarayıcı belleğinde işlenir ve sayfayı kapattığınızda silinir. Spotify dosyalarındaki IP adresi ve konum alanları okunmaz. Letterboxd'da yorum metinleri okunmaz.</td><td>Hiçbir yere gönderilmez.</td></tr>
+  </table>
+  <p>Avatar görselleri, ilgili hizmetin görsel sunucusundan (örn. avatars.githubusercontent.com) yüklenebilir; bu durumda o sunucu IP adresinizi görür. Yazı tipleri sitenin içine gömülüdür, harici yazı tipi hizmeti kullanılmaz.</p>
+
+  <h2>4. Çerezler ve tarayıcı depolaması</h2>
+  <ul>
+    <li>Çerez kullanılmaz.</li>
+    <li>Lofi müzik tercihleriniz (açık/kapalı, ses düzeyi) ve videoya müzik ekleme seçiminiz tarayıcınızın <b>localStorage</b> alanında <code>wf-lofi</code>, <code>wf-lofi-vol</code> ve <code>wf-reel-audio</code> adlarıyla saklanır. Müzik hiçbir sunucudan indirilmez; tarayıcınızda Web Audio ile üretilir ve kendiliğinden çalmaz.</li>
+    <li>"Hareketi azalt" tercihiniz, tarayıcınızın <b>localStorage</b> alanında <code>wf-calm</code> adıyla yalnızca <code>0</code> ya da <code>1</code> olarak saklanır. Kimlik bilgisi içermez.</li>
+    <li>GitHub kaynağı, aynı kullanıcı için tekrar tekrar istek göndermemek amacıyla herkese açık GitHub verisini tarayıcınızın <b>localStorage</b> alanında en fazla <b>30 dakika</b> önbelleğe alabilir. Tarayıcı ayarlarından silebilirsiniz.</li>
+  </ul>
+
+  <h2>5. Barındırma kayıtları</h2>
+  <p>Barındırma sağlayıcısı, siteyi sunarken teknik günlükler (IP adresi, tarayıcı bilgisi, istek zamanı) tutabilir. Bu kayıtlar güvenlik ve performans içindir. Ayrıntı için sağlayıcının gizlilik politikasına bakın: <span class="ph">[sağlayıcı bağlantısı]</span>. Sağlayıcının sunucuları yurt dışında olabilir.</p>
+
+  <h2>6. Üçüncü kişilerin verileri (özellikle WhatsApp)</h2>
+  <ul>
+    <li>Bir sohbet dosyası yüklediğinizde, o sohbette yer alan <b>diğer kişilerin</b> adları ve mesaj sayıları gibi bilgiler de işlenir. Dosyayı yüklemeden önce o kişilerin buna uygun olduğundan emin olun.</li>
+    <li>Kartlarda kişi adları görünür. "Kişi adlarını takma adla göster" seçeneği bunu gizler. Mesaj içerikleri hiçbir kartta gösterilmez. Kelime kartı varsayılan olarak kapalıdır, çünkü özel kelimeler içerebilir.</li>
+    <li>Düello ve Takım özelliklerinde yalnızca <b>herkese açık</b> veriler kullanılır. Başkasının verisinden ürettiğiniz görselleri paylaşırken kişiliğe saygı gösterin.</li>
+  </ul>
+
+  <h2>7. Paylaşım</h2>
+  <p>Kartlar ve video cihazınızda üretilir. Paylaş düğmesi ya da indirdiğiniz dosya aracılığıyla Instagram gibi üçüncü taraf hizmetlere göndermeniz sizin kararınızdır; o hizmetlerin kendi gizlilik koşulları geçerlidir. Kartlarda adınız, kullanıcı adınız ve istatistikleriniz görünebilir.</p>
+
+  <h2>8. Hukuki sebep ve saklama</h2>
+  <p>Site, kullanıcı verisini kendi sunucularında saklamaz. Barındırma günlükleri bakımından işleme sebebi, 6698 sayılı KVKK m.5/2-f kapsamında veri sorumlusunun meşru menfaatidir ve günlükler <span class="ph">[süre, örn. 30 gün]</span> içinde silinir. <small>(Bu bölümü barındırma sağlayıcınızın gerçek uygulamasına göre netleştirin.)</small></p>
+
+  <h2>9. Çocuklar</h2>
+  <p>Site 18 yaşından küçükler için tasarlanmamıştır. 18 yaşından küçükseniz bir ebeveyninizle birlikte kullanın.</p>
+
+  <h2>10. Haklarınız</h2>
+  <p>KVKK m.11 uyarınca, kişisel verilerinizin işlenip işlenmediğini öğrenme, bilgi talep etme, düzeltme ve silme isteme, itiraz etme ve zarar hâlinde tazminat talep etme haklarına sahipsiniz. Başvurular için: <span class="ph">[e-posta]</span>.</p>
+
+  <h2>11. Bağlantı olmadığı bildirimi</h2>
+  <p>Bu proje bağımsızdır; GitHub, Lichess, Chess.com, AniList, Stack Overflow / Stack Exchange, Letterboxd, WhatsApp ve Spotify ile bağlantılı değildir ve onlar tarafından onaylanmamıştır. Adlar yalnızca verinin kaynağını belirtmek için kullanılır ve ilgili sahiplerinin markalarıdır.</p>
+
+  <h2>12. Değişiklikler</h2>
+  <p>Bu metin güncellenebilir. Yürürlük tarihi: <span class="ph">[GG.AA.YYYY]</span></p>
+</main>
+</body>
+</html>
