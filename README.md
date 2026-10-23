@@ -1,73 +1,61 @@
 # Wrapped Fabrikası
 
-Verileri kaydırmalı hikâyelere, paylaşılabilir görsellere ve Reels formatında videolara dönüştüren, tarayıcıda çalışan bir web uygulaması.
+**Kişisel verilerini paylaşılabilir hikâyelere dönüştür.** GitHub, takım etkinliği, Stack Exchange, satranç, anime, film, WhatsApp ve müzik verilerinden kaydırmalı hikâyeler, görseller ve Reels biçiminde videolar üretmeye yönelik tarayıcı tabanlı bir uygulama.
 
-> **Durum:** Statik HTML/CSS/JavaScript projesi. Derleme adımı veya paket yöneticisi gerektirmez.
+> **Durum:** Geliştirme aşamasında. Kaynak dosyaları ve temel statik kontroller mevcut; tüm akışlar henüz uçtan uca doğrulanmış değildir.
 
 ## Özellikler
 
-- **GitHub:** Herkese açık profil ve katkı verilerinden yıllık özet.
-- **Takım:** Organizasyon/depo etkinliklerini karşılaştırma.
-- **Kod Soruları:** Stack Exchange profil istatistikleri.
-- **Satranç:** Lichess ve Chess.com oyun verileri.
-- **Anime:** AniList listelerinden özet.
-- **Film:** Letterboxd dışa aktarım dosyalarından özet.
-- **WhatsApp:** Sohbet dışa aktarım dosyalarını yerel olarak analiz etme.
-- **Müzik:** Spotify veri dışa aktarım dosyalarından istatistik.
-- Kartları gezme, görsel olarak dışa aktarma ve video oluşturma.
-- Örnek veriyle bazı akışları deneme.
+- GitHub herkese açık profil ve katkı verileri
+- Organizasyon/depo karşılaştırmaları
+- Stack Exchange profil istatistikleri
+- Lichess ve Chess.com oyun verileri
+- AniList anime listeleri
+- Letterboxd dışa aktarım dosyaları
+- WhatsApp sohbet dışa aktarım dosyaları
+- Spotify veri dışa aktarım dosyaları
+- Hikâye kartları, paylaşılabilir görseller ve video oluşturma
 
-Özellikler, ilgili veri kaynağının sağladığı alanlara ve dışa aktarım biçimine bağlıdır.
+Kaynakların kullanılabilirliği, ilgili hizmetlerin API'lerine ve dosya dışa aktarım biçimlerine bağlıdır.
 
 ## Yerelde çalıştırma
 
-1. Bu depoyu indirin veya klonlayın.
-2. `index.html` dosyasını güncel bir tarayıcıda açın.
-3. Tarayıcı kısıtları nedeniyle bir özellik doğrudan dosya üzerinden çalışmazsa yerel bir HTTP sunucusu kullanın. Örneğin Python yüklüyse proje klasöründe:
+1. Depoyu klonlayın veya ZIP olarak indirin.
+2. Proje kök dizininde bir terminal açın.
+3. Python yüklüyse `python -m http.server 8000` komutunu çalıştırın.
+4. Tarayıcıda `http://localhost:8000` adresini açın.
 
-   ```bash
-   python -m http.server 8000
-   ```
+Basit kullanım için Node.js, npm veya derleme adımı gerekmez. Tarayıcı kısıtları nedeniyle `index.html` dosyasını doğrudan açmak yerine yerel HTTP sunucusu kullanılması önerilir.
 
-   Ardından `http://localhost:8000` adresini açın.
+## Dosya yapısı
 
-Node.js, npm veya derleme aracı normal kullanım için gerekli değildir.
-
-## Proje yapısı
-
-- `index.html` — ana sayfa ve komut dosyalarının yüklenme sırası.
-- `style.css` ve `theme-*.css` — temel arayüz ve hikâye temaları.
-- `engine.js` — uygulamanın ortak hikâye üretim motoru.
-- `app.js` — kaynak seçimi, form üretimi ve uygulama akışı.
-- `github.js`, `team.js`, `stack.js`, `chess.js`, `anime.js`, `film.js`, `whatsapp.js`, `music.js` — veri kaynakları ve analiz mantığı.
-- `scenes-*.js`, `scene-lib.js` — hikâye sahneleri ve ortak yardımcılar.
-- `motion.js`, `audio.js` — hareket, video ve ses yardımcıları.
-- `gizlilik.html` — gizlilik bildirimi taslağı.
-- `vercel.json` — Vercel dağıtım ayarları ve temel güvenlik başlıkları.
+- `index.html`: uygulama giriş sayfası
+- `app.js`, `engine.js`, `scene-lib.js`: uygulama akışı ve hikâye motoru
+- `github.js`, `team.js`, `stack.js`, `chess.js`, `anime.js`, `film.js`, `whatsapp.js`, `music.js`: kaynaklara özel analiz
+- `scenes-*.js`: hikâye sahneleri
+- `style.css`, `theme-*.css`: arayüz ve tema stilleri
+- `motion.js`, `audio.js`: hareket, video ve ses yardımcıları
+- `gizlilik.html`: gizlilik bildirimi taslağı
+- `vercel.json`: statik dağıtım ve HTTP güvenlik başlıkları
+- `YAZI-TIPI-LISANSLARI.txt`: yazı tipi lisans bildirimleri
 
 ## Gizlilik ve güvenlik
 
-- Sohbet ve müzik gibi kullanıcı tarafından yüklenen dışa aktarım dosyaları tarayıcı içinde işlenmek üzere tasarlanmıştır; hassas dosyaları yalnızca güvendiğiniz cihazlarda açın.
-- Kullanıcı adıyla çalışan özellikler, verileri ilgili üçüncü taraf API'lerinden doğrudan tarayıcıya alır. Bu hizmetlerin kendi koşulları geçerlidir.
-- İsteğe bağlı GitHub erişim token'ı, bu sekmenin belleğinde tutulur ve GitHub API isteklerinde GitHub'a gönderilir. Token'ı kaynak koduna, issue'lara veya ekran görüntülerine koymayın; güvenmediğiniz cihazlarda kullanmayın. Gerekli değilse token alanını boş bırakın.
-- Gizlilik sayfasında yayın öncesi doldurulması gereken hukuki/işletme bilgisi alanları bulunur. `gizlilik.html` bir **taslaktır**; yayınlamadan önce gerçek barındırma ve veri işleme uygulamalarına göre gözden geçirilmelidir.
-- Bu depoda uygulama için bir açık kaynak lisansı belirtilmemiştir. Bir lisans eklenene kadar kullanım ve yeniden dağıtım haklarını varsaymayın. `YAZI-TIPI-LISANSLARI.txt` yazı tiplerine ait lisans bildirimlerini içerir.
+- WhatsApp, Spotify ve Letterboxd gibi kullanıcı dosyaları tarayıcıda işlenmek üzere tasarlanmıştır. Hassas dosyaları yalnızca güvendiğiniz cihazlarda kullanın.
+- Kullanıcı adıyla çalışan özellikler, ilgili üçüncü taraf API'lerine istek gönderir. Bu hizmetler IP adresinizi ve istek bilgilerini görebilir; kendi koşulları geçerlidir.
+- GitHub erişim token'ı kullanırsanız token tarayıcıda bellekte tutulsa bile GitHub API isteklerinde GitHub'a gönderilir. Token'ı koda, issue'lara veya ekran görüntülerine eklemeyin; mümkün olan en dar izinli ve süreli token'ı kullanın.
+- Gizlilik bildirimi hukuki danışmanlık değildir. Barındırma sağlayıcısı, veri işleme ve iletişim bilgileri gerçek uygulamaya göre doğrulanmadan hukuki uyumluluk iddiasında bulunmayın.
+- Bu depoda henüz bir proje açık kaynak lisansı belirtilmemiştir. Bir lisans seçilene kadar kodun yeniden kullanım haklarını varsaymayın. Yazı tiplerinin lisansları ayrı dosyada yer alır.
 
 ## Dağıtım
 
-Proje statik dosyalardan oluştuğu için Vercel gibi statik barındırma hizmetlerine dağıtılabilir. Depoyu içe aktarırken proje kök dizinini seçin; özel bir build komutu veya output dizini tanımlamayın. `vercel.json` mevcut güvenlik başlıklarını ayarlar.
+Bu proje statik dosyalardan oluşur. Vercel'de depoyu içe aktarırken kök dizini kullanın; build komutu ve output dizini tanımlamayın. GitHub Pages kullanırken kaynak dosyaların ve `index.html` dosyasının depo kökünde olması gerekir.
 
-GitHub Pages kullanılacaksa depoda `index.html` kök dizinde kalmalıdır. Dağıtım öncesi ana sayfa, gizlilik sayfası, dosya yükleme akışları ve dış API kullanan özellikler gerçek tarayıcıda kontrol edilmelidir.
+Dağıtımdan önce ana akışları güncel tarayıcılarda deneyin: her veri kaynağı, hatalı dosya, boş veri, mobil görünüm, kart indirme ve video dışa aktarma. Ayrıca gizlilik metnini ve tüm dış API çağrılarını doğrulayın.
 
-## Kontroller
+## Kontrollerin kapsamı
 
-Bu kaynak paketi için yapılan temel statik kontroller:
-
-- JavaScript dosyalarının `node --check` ile sözdizimi kontrolü.
-- Ana sayfada referans verilen yerel dosyaların varlık kontrolü.
-- Kaynak kodunda yaygın gizli anahtar/token desenlerinin taranması.
-
-Bu kontroller tam işlevsel tarayıcı testi veya güvenlik denetimi yerine geçmez.
+Kaynak paketi üzerinde JavaScript sözdizimi, ana HTML yerel dosya referansları, Vercel yapılandırması ve yaygın token/özel anahtar desenleri için statik kontroller yapıldı. Bunlar tam tarayıcı testi, bağımsız güvenlik denetimi veya hukuki inceleme yerine geçmez.
 
 ## Bağımsızlık bildirimi
 
